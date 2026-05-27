@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Launch a Free Landing Page with GitHub Pages + Gumroad</title>
+  <meta name="description" content="A step-by-step guide to publishing a product landing page for free — GitHub Pages for hosting, Namecheap for a $2 domain, Gumroad for sales. No server, no monthly fees." />
+  <link rel="canonical" href="https://buildwithclaude.online/free-landing-page.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="How to Launch a Free Landing Page with GitHub Pages + Gumroad" />
+  <meta property="og:description" content="GitHub Pages for hosting, a $2 domain, Gumroad for sales. The leanest possible stack for selling a digital product." />
+  <meta property="og:url" content="https://buildwithclaude.online/free-landing-page.html" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Launch a Free Landing Page with GitHub Pages and Gumroad",
+    "description": "A step-by-step guide to publishing a product landing page for free — GitHub Pages for hosting, Namecheap for a $2 domain, Gumroad for sales.",
+    "author": { "@type": "Organization", "name": "Build With Claude" },
+    "publisher": { "@type": "Organization", "name": "Build With Claude", "url": "https://buildwithclaude.online" }
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:       #2D6A4F;
+      --green-mid:   #52B788;
+      --green-soft:  #D8F3DC;
+      --ink:         #1A1A2E;
+      --ink-soft:    #3D3D5C;
+      --ink-muted:   #7A7A9A;
+      --bg-page:     #F8F9FC;
+      --bg-surface:  #FFFFFF;
+      --bg-alt:      #EEF2FF;
+      --bg-dark:     #1A1A2E;
+      --border:      #E2E8F0;
+      --display:     -apple-system, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+      --sans:        'Inter', system-ui, sans-serif;
+    }
+
+    html { font-size: 17px; scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg-surface);
+      color: var(--ink);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(26,26,46,0.96);
+      backdrop-filter: blur(12px);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-logo {
+      font-family: var(--display);
+      font-size: 1rem;
+      font-weight: 500;
+      color: #E8EAF6;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo-dot {
+      width: 8px; height: 8px;
+      background: var(--green-mid);
+      border-radius: 50%;
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .nav-back {
+      font-family: var(--display);
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: #9B9EC8;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: #E8EAF6; }
+
+    /* ── HERO (dark) ── */
+    .hero {
+      background: var(--bg-dark);
+      padding: 8rem 2rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 10% 60%, rgba(45,106,79,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 50% at 85% 30%, rgba(82,183,136,0.08) 0%, transparent 60%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-inner {
+      position: relative;
+      max-width: 740px;
+      margin: 0 auto;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(82,183,136,0.12);
+      border: 1px solid rgba(82,183,136,0.25);
+      border-radius: 9999px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--green-mid);
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: var(--display);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: #E8EAF6;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 em { color: var(--green-mid); font-style: normal; }
+    .hero-desc {
+      font-size: 1.05rem;
+      color: #7A7A9A;
+      max-width: 560px;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+    .hero-meta {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      font-size: 0.72rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #4A4A6A;
+    }
+
+    /* ── ARTICLE BODY ── */
+    .article-wrap {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 3.5rem 2rem 5rem;
+    }
+
+    h2 {
+      font-family: var(--display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin: 3rem 0 0.75rem;
+    }
+
+    p {
+      color: var(--ink-soft);
+      margin-bottom: 1.1rem;
+      font-size: 0.95rem;
+    }
+
+    a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    a:hover { color: var(--green-mid); }
+
+    strong { color: var(--ink); font-weight: 500; }
+
+    code {
+      font-family: 'Courier New', monospace;
+      font-size: 0.82rem;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.1em 0.4em;
+      color: var(--green);
+    }
+
+    /* ── COST TABLE ── */
+    .cost-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0 2rem;
+      font-size: 0.88rem;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .cost-table th {
+      background: var(--bg-page);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      text-align: left;
+      padding: 0.75rem 1rem;
+      border-bottom: 2px solid var(--border);
+    }
+    .cost-table td {
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--ink-soft);
+      font-weight: 400;
+      vertical-align: top;
+    }
+    .cost-table td:first-child { color: var(--ink); font-weight: 500; }
+    .cost-free {
+      color: var(--green) !important;
+      font-weight: 600;
+      font-family: 'Courier New', monospace;
+      font-size: 0.82rem;
+    }
+    .cost-paid {
+      color: #B45309 !important;
+      font-weight: 600;
+      font-family: 'Courier New', monospace;
+      font-size: 0.82rem;
+    }
+
+    /* ── STEPS ── */
+    .steps { margin: 1.5rem 0; display: flex; flex-direction: column; gap: 1px; }
+
+    .step {
+      display: flex;
+      gap: 1.25rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 0.5rem;
+      transition: border-color 0.2s;
+    }
+    .step:hover { border-color: var(--green-mid); }
+
+    .step-num {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      background: var(--green-soft);
+      color: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 600;
+      font-family: var(--display);
+      margin-top: 2px;
+    }
+    .step-content {}
+    .step-title {
+      font-family: var(--display);
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+    }
+    .step p {
+      font-size: 0.88rem;
+      color: var(--ink-muted);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* ── CODE BLOCK ── */
+    .code-block {
+      background: var(--ink);
+      border-radius: 8px;
+      padding: 1.5rem 1.75rem;
+      margin: 1.5rem 0;
+      overflow-x: auto;
+    }
+    .code-label {
+      font-family: 'Courier New', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #4A4A6A;
+      margin-bottom: 0.75rem;
+    }
+    .code-block pre {
+      font-family: 'Courier New', monospace;
+      font-size: 0.82rem;
+      line-height: 1.8;
+      color: #C8CAE6;
+      white-space: pre;
+    }
+    .hl-tag  { color: #52B788; }
+    .hl-attr { color: #9B9EC8; }
+    .hl-str  { color: #F0C070; }
+    .hl-com  { color: #3D3D5C; font-style: italic; }
+
+    /* ── FILE TREE ── */
+    .file-tree {
+      background: var(--bg-page);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      font-family: 'Courier New', monospace;
+      font-size: 0.82rem;
+      line-height: 2;
+      color: var(--ink-soft);
+    }
+    .file-tree .dir  { color: var(--green); font-weight: 600; }
+    .file-tree .note { color: var(--ink-muted); font-style: italic; }
+
+    /* ── CALLOUT ── */
+    .callout {
+      background: var(--green-soft);
+      border-left: 3px solid var(--green-mid);
+      border-radius: 0 6px 6px 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+      font-size: 0.88rem;
+      color: var(--ink-soft);
+    }
+    .callout strong { color: var(--green); }
+
+    /* ── DIVIDER ── */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 3rem 0;
+    }
+
+    /* ── CTA BOX ── */
+    .cta-box {
+      background: var(--bg-dark);
+      border-radius: 12px;
+      padding: 3rem;
+      margin: 3rem 0 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-box::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 100%, rgba(45,106,79,0.2) 0%, transparent 70%);
+    }
+    .cta-box * { position: relative; }
+    .cta-box h2 {
+      font-family: var(--display);
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #E8EAF6;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.75rem;
+    }
+    .cta-box h2 em { color: var(--green-mid); font-style: normal; }
+    .cta-box p {
+      color: #7A7A9A;
+      font-size: 0.9rem;
+      margin-bottom: 1.75rem;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--green);
+      color: white;
+      font-family: var(--display);
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      transition: all 0.2s;
+    }
+    .btn-primary:hover { background: #245c43; transform: translateY(-1px); color: white; }
+    .cta-note {
+      font-size: 0.72rem;
+      color: #4A4A6A;
+      margin-top: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--ink-muted);
+      line-height: 2;
+    }
+    footer a { color: var(--ink-muted); }
+    footer a:hover { color: var(--green); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      nav { padding: 1rem; }
+      .hero { padding: 6rem 1.25rem 3rem; }
+      .article-wrap { padding: 2.5rem 1.25rem 4rem; }
+      .cta-box { padding: 2rem 1.5rem; }
+      .step { padding: 1rem 1.25rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">
+      <span class="nav-logo-dot"></span>
+      Build With Claude
+    </a>
+    <a href="/" class="nav-back">← Back to main page</a>
+  </nav>
+
+  <!-- DARK HERO -->
+  <header class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-inner">
+      <div class="eyebrow">Free guide</div>
+      <h1>How to launch a landing page<br>for <em>almost nothing</em></h1>
+      <p class="hero-desc">GitHub Pages for hosting. A $2 domain. Gumroad for sales. The whole stack costs less than a coffee — and this site is a live example of exactly that.</p>
+      <div class="hero-meta">
+        <span>5 min read</span>
+        <span>No server required</span>
+        <span>Works for any digital product</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- WHITE ARTICLE BODY -->
+  <div class="article-wrap">
+
+    <h2>Why this stack works</h2>
+    <p>Most people assume selling a digital product online requires a monthly subscription — Squarespace, Webflow, Shopify, or at minimum a paid WordPress host. It doesn't. If your product is a file, a PDF, or a template, you can sell it with zero recurring costs.</p>
+    <p>The trick is separating three jobs that most platforms bundle together: <strong>hosting the page</strong>, <strong>owning the domain</strong>, and <strong>handling the sale</strong>. Each has a free or near-free solution.</p>
+
+    <table class="cost-table">
+      <thead>
+        <tr>
+          <th>Job</th>
+          <th>Tool</th>
+          <th>Cost</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Host the page</td>
+          <td>GitHub Pages</td>
+          <td class="cost-free">FREE</td>
+        </tr>
+        <tr>
+          <td>Own a domain</td>
+          <td>Namecheap</td>
+          <td class="cost-paid">~$2 / year</td>
+        </tr>
+        <tr>
+          <td>Handle the sale</td>
+          <td>Gumroad</td>
+          <td class="cost-free">FREE (10% per sale)</td>
+        </tr>
+        <tr>
+          <td>Write the page</td>
+          <td>Plain HTML + CSS</td>
+          <td class="cost-free">FREE</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Gumroad takes 10% of each sale — but only money you've already made. No upfront cost. For a $12 product you keep $10.80. For pay-what-you-want, you keep 90% of whatever someone gives you.</p>
+
+    <hr class="divider" />
+
+    <h2>What you'll need before you start</h2>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-title">A GitHub account — free at github.com</div>
+          <p>You'll use this to store and publish your HTML file. No coding experience required for a simple single-page site.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-title">A Gumroad account — free at gumroad.com</div>
+          <p>This is where your product file lives and where buyers pay. Gumroad handles the checkout, delivery, and payment processing.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-title">A domain — optional but worth it</div>
+          <p>Namecheap has <code>.online</code> domains for around $2/year — a real domain looks more credible than a raw GitHub URL when you're sharing a product.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <h2>Step 1 — Set up your Gumroad product first</h2>
+    <p>Do Gumroad before you write a single line of HTML. Your landing page's main button needs a real checkout URL to link to — you want that before you build the page around it.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1.1</div>
+        <div class="step-content">
+          <div class="step-title">Create your product on Gumroad</div>
+          <p>Go to app.gumroad.com → New Product. Upload your file (PDF, ZIP, whatever). Add a name, description, and price. For pay-what-you-want: set the price to $0 and add a suggested amount below it.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">1.2</div>
+        <div class="step-content">
+          <div class="step-title">Publish and copy the product URL</div>
+          <p>Once published, your product gets a URL like <code>yourname.gumroad.com/l/your-product</code>. Copy it — this is what your buy button will link to.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Note:</strong> Gumroad gives every product its own sales page automatically. Your custom GitHub Pages landing page is just a nicer, branded version that links through to Gumroad for the actual checkout.
+    </div>
+
+    <hr class="divider" />
+
+    <h2>Step 2 — Build your page with Claude</h2>
+    <p>You don't need to know HTML to write this page. Open a Claude chat, describe your product, and ask it to build the whole thing as a single self-contained HTML file. One file, everything included — no separate CSS, no extra files to manage.</p>
+    <p>A good landing page needs very few things: a headline that says exactly what the product is, a short list of what's inside, and a buy button linking to your Gumroad URL. That's it.</p>
+    <p>Here's a starter prompt you can copy and adapt:</p>
+
+    <div class="code-block">
+      <div class="code-label">Starter prompt for Claude</div>
+      <pre>Create a landing page for my digital product as a single
+self-contained HTML file (all CSS inside a &lt;style&gt; tag,
+no external files).
+
+Product: [your product name]
+What it is: [one sentence description]
+Who it's for: [your audience]
+What's included: [list your files/items]
+Price: [your price or pay-what-you-want]
+Buy button URL: [your Gumroad link]
+
+Style: clean, modern, dark background with [your accent colour].
+Include: a nav, hero section, what's included list,
+and a footer. Make the buy button prominent.</pre>
+    </div>
+
+    <p>Claude will produce a complete, working HTML file. Review it, ask for any changes — colours, copy, layout — then save it as <code>index.html</code> on your computer.</p>
+
+    <hr class="divider" />
+
+    <h2>Step 3 — Publish with GitHub Pages</h2>
+    <p>GitHub Pages turns any repository into a live website, for free, instantly, with HTTPS included.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">3.1</div>
+        <div class="step-content">
+          <div class="step-title">Create a new repository on GitHub</div>
+          <p>Go to github.com → New repository. Name it anything — the name won't show in the URL once you add a custom domain. Set it to public (required for GitHub Pages on free accounts).</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3.2</div>
+        <div class="step-content">
+          <div class="step-title">Upload your HTML file</div>
+          <p>The simplest method: drag your <code>index.html</code> directly into the repository via the GitHub web interface. No Git knowledge needed for a single file.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3.3</div>
+        <div class="step-content">
+          <div class="step-title">Enable GitHub Pages</div>
+          <p>Repository → Settings → Pages. Under "Source", select your main branch and the root folder. Click Save. GitHub gives you a live URL like <code>yourusername.github.io/repo-name</code> — your page is live.</p>
+        </div>
+      </div>
+    </div>
+
+    <p>Your file structure in the repository will look like this:</p>
+
+    <div class="file-tree">
+      <span class="dir">your-repo/</span><br>
+      &nbsp;&nbsp;index.html &nbsp;<span class="note">← your landing page</span><br>
+      &nbsp;&nbsp;CNAME &nbsp;<span class="note">← your custom domain, one line, no extension</span>
+    </div>
+
+    <hr class="divider" />
+
+    <h2>Step 4 — Connect a custom domain</h2>
+    <p>The GitHub URL works fine, but a real domain looks more credible. Namecheap has <strong>.online domains for around $2/year</strong> — worth it for any product you're seriously sharing.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">4.1</div>
+        <div class="step-content">
+          <div class="step-title">Buy your domain on Namecheap</div>
+          <p>Search for your idea at namecheap.com. The <code>.online</code> extension is genuinely around $2/year — not a promo price, just cheap. That's all you need.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4.2</div>
+        <div class="step-content">
+          <div class="step-title">Add GitHub's DNS records in Namecheap</div>
+          <p>In Namecheap → Advanced DNS, add four A records pointing to GitHub's IP addresses, plus one CNAME record for www. Search "GitHub Pages custom domain DNS" for the exact current IPs — GitHub publishes them in their documentation.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4.3</div>
+        <div class="step-content">
+          <div class="step-title">Add a CNAME file to your repository</div>
+          <p>Create a plain text file named exactly <code>CNAME</code> (no extension) containing just your domain on one line: <code>yourdomain.online</code></p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4.4</div>
+        <div class="step-content">
+          <div class="step-title">Enable HTTPS in GitHub Pages settings</div>
+          <p>Once DNS propagates (minutes to a few hours — this is normal), go back to Settings → Pages and tick "Enforce HTTPS". Done.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <h2>The whole thing in one view</h2>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-title">Create your product on Gumroad → copy the checkout URL</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-title">Ask Claude to build your landing page → save as index.html</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-title">Upload index.html to a public GitHub repository</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <div class="step-title">Enable GitHub Pages in repository settings</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <div class="step-title">Buy a $2 domain on Namecheap, point DNS to GitHub</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <div class="step-title">Add CNAME file, enable HTTPS — you're live</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Total recurring cost: ~$2/year.</strong> Gumroad only charges when you make a sale (10% per transaction). GitHub Pages is free forever. A <code>.online</code> domain on Namecheap costs around $2 a year. That's the entire infrastructure cost of a live product page.
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-box">
+      <h2>See this in practice with <em>Build With Claude</em></h2>
+      <p>This site was built and launched exactly this way — GitHub Pages, a $2 .online domain, Gumroad for sales. The guide inside teaches a different workflow, but the stack that hosts it is the same one described in this article.</p>
+      <a href="/" class="btn-primary">See the landing page →</a>
+      <p class="cta-note">Pay what you want · $12 suggested · Instant download</p>
+    </div>
+
+  </div><!-- /article-wrap -->
+
+  <footer>
+    <p>
+      Part of <a href="/">Build With Claude</a> · buildwithclaude.online<br>
+      Built by <a href="https://soulmagicstudio.com" target="_blank">Soul Magic Studio</a>
+    </p>
+  </footer>
+
+</body>
+</html>
