@@ -466,15 +466,16 @@
   }
 
   /* ── FOOTER ── */
-  footer {
-    background: #13131f;
-    padding: 2.5rem 2rem;
-    text-align: center;
-    border-top: 1px solid rgba(255,255,255,0.05);
-  }
-  footer p { font-size: 0.8rem; color: #4A4A6A; line-height: 1.8; }
-  footer a { color: #5A5A8A; text-decoration: none; }
-  footer a:hover { color: var(--green-mid); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--ink-muted);
+      line-height: 2;
+    }
+    footer a { color: var(--ink-muted); }
+    footer a:hover { color: var(--green); }
 
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
