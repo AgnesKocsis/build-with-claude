@@ -20,7 +20,6 @@
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "Build With Claude — A Divi 5 AI Workflow",
-    "image": "https://buildwithclaude.online/og-image.png",
     "description": "A PDF guide, skill files, design system starter and prompt sheet teaching web designers how to generate valid Divi 5 JSON using Claude AI.",
     "url": "https://buildwithclaude.online/",
     "offers": {
@@ -453,6 +452,54 @@
     line-height: 1.55;
   }
 
+  /* ── RESULTS IMAGE ── */
+  .results-img {
+    display: block;
+    width: 100%;
+    margin-top: 2.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: 0 12px 40px rgba(26,26,46,0.10);
+  }
+
+  /* ── TESTIMONIAL ── */
+  .testimonial-section {
+    background: var(--bg-surface);
+    padding: 6rem 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .testimonial-inner {
+    max-width: 660px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .testimonial-inner .eyebrow {
+    font-family: var(--display);
+    font-size: 0.68rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--green);
+    margin-bottom: 1.5rem;
+  }
+  .big-quote {
+    border: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+  }
+  .big-quote p {
+    font-family: var(--display);
+    font-size: clamp(1.25rem, 2.6vw, 1.6rem);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .testimonial-source {
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+  }
+
   /* ── CTA ── */
   .cta-section {
     background: var(--bg-dark);
@@ -543,7 +590,7 @@
     <div class="hero-badge">A Divi 5 AI Workflow · For web designers</div>
     <h1>Build With <em>Claude</em></h1>
     <p class="hero-subtitle">A Divi 5 AI Workflow</p>
-    <p class="hero-desc">How to use Claude and a set of skill files to design and generate complete Divi 5 websites — faster, more consistently, and without giving up creative control.</p>
+    <p class="hero-desc">This is how I use Claude and a set of skill files to build complete Divi 5 websites. Faster, more consistent — and you stay in creative control the whole time.</p>
     <div class="hero-actions">
       <a href="https://soulmagicstudio.gumroad.com/l/bwc" target="_blank" class="btn-primary">Get the guide & skill files →</a>
       <a href="#how" class="btn-ghost">See how it works</a>
@@ -558,9 +605,9 @@
     <div class="metaphor-text reveal">
       <p class="eyebrow">The idea behind this</p>
       <h2>Claude builds the house.<br><em>You decorate it.</em></h2>
-      <p>A builder puts up the structure — the walls, the wiring, the foundations. With total technical precision. But the builder doesn't choose the wallpaper. They don't know what your client needs to feel when they walk through the front door.</p>
+      <p>A builder puts up the structure — the walls, the wiring, the foundations. But the builder doesn't choose the wallpaper. They don't know what your client needs to feel when they walk through the front door.</p>
       <p>That's the interior designer's job. And no AI can do it for you.</p>
-      <p>This workflow gives Claude the technical knowledge to build valid Divi 5 JSON — consistently, quickly, without the silent failures. You bring the design decisions, the brand direction, the creative judgment. You stay in control of everything that matters.</p>
+      <p>This workflow gives Claude the technical knowledge to build valid Divi 5 JSON — quickly, consistently, without the silent import failures. You bring the design decisions, the brand direction, your knowledge of the client. That part stays yours.</p>
     </div>
     <div class="metaphor-visual reveal">
       <div class="role-card">
@@ -595,13 +642,13 @@
   <div class="section-header reveal">
     <p class="eyebrow">What's in the bundle</p>
     <h2>Everything you need to start building</h2>
-    <p>A PDF guide, a set of skill files for your Claude Project, and a working design system example — all tested on a real six-page website build.</p>
+    <p>A PDF guide, a set of skill files for your Claude Project, and a working design system example. I tested everything on a real six-page website build.</p>
   </div>
   <div class="includes-grid">
     <div class="include-card reveal">
       <span class="include-icon">📖</span>
       <h3>The PDF guide</h3>
-      <p>6 chapters covering the full workflow — from setting up your Claude Project to generating validated page JSON. Written from real experience building a complete website system.</p>
+      <p>6 chapters covering the full workflow — from setting up your Claude Project to generating validated page JSON. Everything in it comes from building a real website system, not theory.</p>
     </div>
     <div class="include-card reveal">
       <span class="include-icon">🧠</span>
@@ -611,7 +658,7 @@
     <div class="include-card reveal">
       <span class="include-icon">🎨</span>
       <h3>Design system JSON</h3>
-      <p>A working example design system you can import into Divi immediately, plus a blank starter template to fill with your own tokens and hand to Claude.</p>
+      <p>A complete example design system you can import into a fresh Divi install — plus a visual HTML reference so you can see how all the tokens and presets fit together.</p>
     </div>
     <div class="include-card reveal">
       <span class="include-icon">💬</span>
@@ -692,13 +739,27 @@
   <div class="story-inner">
     <p class="eyebrow reveal">Where this came from</p>
     <h2 class="reveal">How this workflow was actually built</h2>
-    <p class="reveal">It started with skill files from <strong>Shashank Gupta at divilove.com</strong> — structured knowledge documents that teach Claude the confirmed Divi 5 JSON schemas.</p>
-    <p class="reveal">The conceptual piece — understanding what a Divi 5 design system actually is, how global variables work, why you build the system before the pages — came from <strong>Ania Romańska at divilover.com</strong>.</p>
+    <p class="reveal">Hi, I'm Agi. I've been building websites with Divi for 6 years, and started working with Divi 5 this year. It's still early days for the new builder — but I'm excited about what it makes possible, and this workflow is a big part of why.</p>
+    <p class="reveal">It started with skill files from <strong>Shashank Gupta at divilove.com</strong> — structured knowledge documents that teach Claude the confirmed Divi 5 JSON schemas. Before having them, Claude's Divi output looked plausible but broke on import. After uploading the skills, it generated valid JSON correctly.</p>
+    <p class="reveal">The conceptual piece — understanding what a Divi 5 design system actually is, how global variables work, why you build the system before the pages — came from <strong>Ania Romańska at divilover.com</strong>. Her course on Divi 5 design systems is something I genuinely recommend taking alongside this guide.</p>
     <p class="reveal">Then came the key insight: don't jump straight to pages. Build the design system first, import it, and let every page draw from the same source of truth. Then I started feeding Claude real finished Divi 5 page exports alongside the skill files — giving it working examples, not just theory. The output got noticeably better.</p>
     <blockquote class="reveal">
       <p>"The result was a six-page website template system — a complete design system, six page templates, a Python build pipeline, and validated JSON throughout."</p>
     </blockquote>
-    <p class="reveal">This guide documents that workflow so other Divi designers can use it — whatever niche they work in.</p>
+    <p class="reveal">This guide documents that workflow so other Divi designers can use it — whatever niche you work in. It's a new workflow and I'm still learning as I go. If you find something that makes it better, I'd love to hear it.</p>
+    <video src="/laptop-mockup-navy.mp4" class="results-img reveal" autoplay muted loop playsinline aria-label="Pages built with the Build With Claude workflow, shown inside Divi 5"></video>
+  </div>
+</section>
+
+
+<!-- TESTIMONIAL -->
+<section class="testimonial-section">
+  <div class="testimonial-inner reveal">
+    <p class="eyebrow">Early feedback</p>
+    <blockquote class="big-quote">
+      <p>"The documentation is really easy to follow, and I like how the system includes automation but still encourages you to be creative. I'd been worried about AI ripping the creative side out of web design — this has a really good balance."</p>
+    </blockquote>
+    <p class="testimonial-source">— a Divi designer, one of the first buyers</p>
   </div>
 </section>
 
@@ -708,7 +769,7 @@
   <div class="cta-inner">
     <div class="cta-price reveal">PDF + Skill Files Bundle</div>
     <h2 class="reveal">Ready to let<br><em>Claude build?</em></h2>
-    <p class="reveal">Get the guide, the skill files, the design system files, and the prompt sheet. Everything tested on a real project. Works for any niche, any client type.</p>
+    <p class="reveal">Get the guide, the skill files, the design system example, and the prompt sheet. Everything tested on a real project. Works for any niche, any client type.</p>
     <a href="https://soulmagicstudio.gumroad.com/l/bwc" target="_blank" class="btn-primary reveal" style="font-size:1rem; padding:1rem 2.5rem; display:inline-block;">
       Get Build With Claude →
     </a>
