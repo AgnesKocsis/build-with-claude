@@ -32,24 +32,24 @@
   </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&family=Courier+Prime&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --green:       #2D6A4F;
-    --green-mid:   #52B788;
-    --green-soft:  #D8F3DC;
-    --ink:         #1A1A2E;
-    --ink-soft:    #3D3D5C;
-    --ink-muted:   #7A7A9A;
-    --bg-page:     #F8F9FC;
-    --bg-surface:  #FFFFFF;
-    --bg-alt:      #EEF2FF;
-    --bg-dark:     #1A1A2E;
-    --border:      #E2E8F0;
-    --display:     -apple-system, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
-    --sans:        'Inter', system-ui, sans-serif;
+    --ink:         #243837;  /* spruce: headings and body */
+    --ink-soft:    #243837;
+    --ink-muted:   #5E6960;  /* moss: small and secondary text */
+    --green:       #A9482A;  /* terracotta: the only accent */
+    --green-mid:   #A9482A;
+    --green-soft:  #FFFDF9;
+    --border:      #DDD8CC;
+    --bg-surface:  #FFFDF9;  /* warm white: cards, alternate sections */
+    --bg-page:     #EFE6D8;  /* sand: page ground */
+    --bg-dark:     #243837;  /* spruce: footer only */
+    --bg-alt:      #EFE6D8;
+    --sans:        'Nunito Sans', system-ui, sans-serif;
+    --display:     'Nunito Sans', system-ui, sans-serif;
   }
 
   html { font-size: 17px; scroll-behavior: smooth; }
@@ -67,19 +67,19 @@
   nav {
     position: fixed; top: 0; left: 0; right: 0;
     z-index: 100;
-    background: rgba(26,26,46,0.96);
+    background: rgba(239,230,216,0.94);
     backdrop-filter: blur(12px);
     padding: 1rem 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid var(--border);
   }
   .nav-logo {
     font-family: var(--display);
     font-size: 1rem;
-    font-weight: 500;
-    color: #E8EAF6;
+    font-weight: 600;
+    color: var(--ink);
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -101,19 +101,19 @@
     color: white;
     font-family: var(--display);
     font-size: 0.78rem;
-    font-weight: 500;
+    font-weight: 600;
     padding: 0.5rem 1.25rem;
     border-radius: 6px;
     text-decoration: none;
     letter-spacing: -0.01em;
     transition: background 0.2s;
   }
-  .nav-cta:hover { background: #245c43; }
+  .nav-cta:hover { background: #8E3B22; }
 
   /* ── HERO ── */
   .hero {
     min-height: 100vh;
-    background: var(--bg-dark);
+    background: var(--bg-page);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -123,15 +123,13 @@
   }
   .hero-bg {
     position: absolute; inset: 0;
-    background:
-      radial-gradient(ellipse 60% 50% at 20% 50%, rgba(45,106,79,0.2) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 40% at 80% 60%, rgba(82,183,136,0.1) 0%, transparent 60%);
+    background: none;
   }
   .hero-grid {
     position: absolute; inset: 0;
     background-image:
-      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      linear-gradient(rgba(36,56,55,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(36,56,55,0.05) 1px, transparent 1px);
     background-size: 60px 60px;
   }
   .hero-inner {
@@ -144,12 +142,12 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: rgba(82,183,136,0.12);
-    border: 1px solid rgba(82,183,136,0.25);
+    background: transparent;
+    border: 1px solid rgba(169,72,42,0.35);
     border-radius: 9999px;
     padding: 0.35rem 1rem;
     font-size: 0.72rem;
-    font-weight: 500;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.12em;
     color: var(--green-mid);
@@ -159,10 +157,10 @@
   .hero h1 {
     font-family: var(--display);
     font-size: clamp(3rem, 7vw, 5.5rem);
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1.05;
-    letter-spacing: -0.04em;
-    color: #E8EAF6;
+    letter-spacing: -0.025em;
+    color: var(--ink);
     margin-bottom: 0.4rem;
     animation: fadeUp 0.6s 0.1s ease both;
   }
@@ -172,13 +170,13 @@
     font-size: clamp(1.1rem, 2.5vw, 1.5rem);
     font-weight: 300;
     letter-spacing: -0.02em;
-    color: rgba(200,202,230,0.5);
+    color: var(--ink-muted);
     margin-bottom: 2rem;
     animation: fadeUp 0.6s 0.15s ease both;
   }
   .hero-desc {
     font-size: clamp(0.95rem, 1.8vw, 1.05rem);
-    color: #B0B3CC;
+    color: var(--ink-soft);
     max-width: 560px;
     margin: 0 auto 3rem;
     line-height: 1.8;
@@ -196,28 +194,28 @@
     color: white;
     font-family: var(--display);
     font-size: 0.9rem;
-    font-weight: 500;
+    font-weight: 600;
     padding: 0.9rem 2rem;
     border-radius: 8px;
     text-decoration: none;
     letter-spacing: -0.01em;
     transition: all 0.2s;
   }
-  .btn-primary:hover { background: #245c43; transform: translateY(-1px); }
+  .btn-primary:hover { background: #8E3B22; transform: translateY(-1px); }
   .btn-ghost {
     background: transparent;
-    color: #9B9EC8;
+    color: var(--ink);
     font-family: var(--display);
     font-size: 0.9rem;
     font-weight: 400;
     padding: 0.9rem 2rem;
     border-radius: 8px;
     text-decoration: none;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid var(--border);
     letter-spacing: -0.01em;
     transition: all 0.2s;
   }
-  .btn-ghost:hover { border-color: rgba(255,255,255,0.2); color: #C5CAE9; }
+  .btn-ghost:hover { border-color: var(--green); color: var(--green); }
 
   /* ── METAPHOR SECTION ── */
   .metaphor {
@@ -236,7 +234,7 @@
   .metaphor-text .eyebrow {
     font-family: var(--display);
     font-size: 0.68rem;
-    font-weight: 500;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.18em;
     color: var(--green);
@@ -245,9 +243,9 @@
   .metaphor-text h2 {
     font-family: var(--display);
     font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1.15;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.015em;
     color: var(--ink);
     margin-bottom: 1.25rem;
   }
@@ -270,7 +268,7 @@
   .role-label {
     font-family: var(--display);
     font-size: 0.65rem;
-    font-weight: 500;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.15em;
     color: var(--green);
@@ -279,7 +277,7 @@
   .role-card h3 {
     font-family: var(--display);
     font-size: 1.15rem;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: -0.02em;
     color: var(--ink);
     margin-bottom: 0.4rem;
@@ -309,7 +307,7 @@
   .section-header .eyebrow {
     font-family: var(--display);
     font-size: 0.68rem;
-    font-weight: 500;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.18em;
     color: var(--green);
@@ -318,9 +316,9 @@
   .section-header h2 {
     font-family: var(--display);
     font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1.15;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.015em;
     color: var(--ink);
     margin-bottom: 0.75rem;
   }
@@ -342,13 +340,20 @@
   .include-card:hover {
     border-color: var(--green-mid);
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(45,106,79,0.08);
+    box-shadow: 0 8px 24px rgba(36,56,55,0.08);
   }
-  .include-icon { font-size: 1.5rem; margin-bottom: 1rem; display: block; }
+  .include-icon {
+    width: 52px; height: 52px;
+    border-radius: 12px;
+    display: grid; place-items: center;
+    margin-bottom: 1.1rem;
+    background: var(--bg-page);
+    color: var(--green);
+  }
   .include-card h3 {
     font-family: var(--display);
     font-size: 1.05rem;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: -0.02em;
     color: var(--ink);
     margin-bottom: 0.5rem;
@@ -357,19 +362,19 @@
 
   /* ── HOW IT WORKS ── */
   .how {
-    background: var(--bg-dark);
+    background: var(--bg-surface);
     padding: 6rem 2rem;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid var(--border);
   }
-  .how .section-header h2 { color: #E8EAF6; }
-  .how .section-header p { color: #B0B3CC; }
+  .how .section-header h2 { color: var(--ink); }
+  .how .section-header p { color: var(--ink-muted); }
   .how .section-header .eyebrow { color: var(--green-mid); }
   .steps-list { max-width: 680px; margin: 0 auto; }
   .step-item {
     display: flex;
     gap: 1.5rem;
     padding: 1.75rem 0;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid var(--border);
     align-items: flex-start;
   }
   .step-item:last-child { border-bottom: none; }
@@ -382,25 +387,25 @@
     display: flex; align-items: center; justify-content: center;
     font-family: var(--display);
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 700;
     margin-top: 0.1rem;
   }
   .step-item:last-child .step-num { background: var(--green); }
   .step-body h3 {
     font-family: var(--display);
     font-size: 1.1rem;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: -0.02em;
-    color: #E8EAF6;
+    color: var(--ink);
     margin-bottom: 0.4rem;
   }
-  .step-body p { font-size: 0.88rem; color: #B0B3CC; line-height: 1.7; }
+  .step-body p { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.7; }
   .step-highlight {
     display: inline-block;
     margin-top: 0.6rem;
     font-size: 0.78rem;
     color: var(--green-mid);
-    border: 1px solid rgba(82,183,136,0.2);
+    border: 1px solid rgba(169,72,42,0.35);
     border-radius: 4px;
     padding: 0.2rem 0.6rem;
     letter-spacing: 0.02em;
@@ -416,7 +421,7 @@
   .story-inner .eyebrow {
     font-family: var(--display);
     font-size: 0.68rem;
-    font-weight: 500;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.18em;
     color: var(--green);
@@ -425,8 +430,8 @@
   .story-inner h2 {
     font-family: var(--display);
     font-size: clamp(1.8rem, 3.5vw, 2.4rem);
-    font-weight: 600;
-    letter-spacing: -0.03em;
+    font-weight: 700;
+    letter-spacing: -0.015em;
     line-height: 1.2;
     color: var(--ink);
     margin-bottom: 1.5rem;
@@ -445,7 +450,7 @@
   blockquote p {
     font-family: var(--display);
     font-size: 1.2rem;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: -0.02em;
     color: var(--ink) !important;
     margin: 0 !important;
@@ -459,7 +464,7 @@
     margin-top: 2.5rem;
     border-radius: 12px;
     border: 1px solid var(--border);
-    box-shadow: 0 12px 40px rgba(26,26,46,0.10);
+    box-shadow: 0 12px 40px rgba(36,56,55,0.10);
   }
 
   /* ── TESTIMONIAL ── */
@@ -476,7 +481,7 @@
   .testimonial-inner .eyebrow {
     font-family: var(--display);
     font-size: 0.68rem;
-    font-weight: 500;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.18em;
     color: var(--green);
@@ -490,7 +495,7 @@
   .big-quote p {
     font-family: var(--display);
     font-size: clamp(1.25rem, 2.6vw, 1.6rem);
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: -0.02em;
     line-height: 1.5;
     color: var(--ink);
@@ -502,7 +507,7 @@
 
   /* ── CTA ── */
   .cta-section {
-    background: var(--bg-dark);
+    background: var(--bg-page);
     padding: 7rem 2rem;
     text-align: center;
     position: relative;
@@ -511,27 +516,27 @@
   .cta-section::before {
     content: '';
     position: absolute; inset: 0;
-    background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(45,106,79,0.2) 0%, transparent 70%);
+    background: none;
   }
   .cta-inner { position: relative; max-width: 600px; margin: 0 auto; }
   .cta-inner h2 {
     font-family: var(--display);
     font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 600;
-    letter-spacing: -0.04em;
+    font-weight: 700;
+    letter-spacing: -0.025em;
     line-height: 1.15;
-    color: #E8EAF6;
+    color: var(--ink);
     margin-bottom: 1rem;
   }
   .cta-inner h2 em { color: var(--green-mid); font-style: normal; }
-  .cta-inner p { font-size: 0.97rem; color: #B0B3CC; line-height: 1.8; margin-bottom: 2.5rem; }
+  .cta-inner p { font-size: 0.97rem; color: var(--ink-soft); line-height: 1.8; margin-bottom: 2.5rem; }
   .cta-price {
     display: inline-block;
     font-family: var(--display);
     font-size: 0.78rem;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--green-mid);
-    border: 1px solid rgba(82,183,136,0.25);
+    border: 1px solid rgba(169,72,42,0.35);
     border-radius: 9999px;
     padding: 0.4rem 1.25rem;
     margin-bottom: 1.5rem;
@@ -540,14 +545,14 @@
 
   /* ── FOOTER ── */
   footer {
-    background: #13131f;
+    background: var(--bg-dark);
     padding: 2.5rem 2rem;
     text-align: center;
     border-top: 1px solid rgba(255,255,255,0.05);
   }
-  footer p { font-size: 0.8rem; color: #8A8AA0; line-height: 1.8; }
-  footer a { color: #9A9AB0; text-decoration: none; }
-  footer a:hover { color: var(--green-mid); }
+  footer p { font-size: 0.8rem; color: #FFFDF9; line-height: 1.8; }
+  footer a { color: #FFFDF9; text-decoration: underline; text-underline-offset: 3px; }
+  footer a:hover { text-decoration-thickness: 2px; }
 
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
@@ -646,32 +651,32 @@
   </div>
   <div class="includes-grid">
     <div class="include-card reveal">
-      <span class="include-icon">📖</span>
+      <span class="include-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5.5c2.8-1 5.8-1 9 1v13c-3.2-2-6.2-2-9-1z"/><path d="M21 5.5c-2.8-1-5.8-1-9 1v13c3.2-2 6.2-2 9-1z"/></svg></span>
       <h3>The PDF guide</h3>
-      <p>6 chapters covering the full workflow — from setting up your Claude Project to generating validated page JSON. Everything in it comes from building a real website system, not theory.</p>
+      <p>7 chapters covering the full workflow — from setting up your Claude Project and approving your design system in Claude to generating validated page JSON. Everything in it comes from building a real website system, not theory.</p>
     </div>
     <div class="include-card reveal">
-      <span class="include-icon">🧠</span>
-      <h3>7 skill files</h3>
-      <p>Structured knowledge documents you upload to Claude Projects. They teach Claude the confirmed Divi 5 JSON schemas — module types, nesting rules, styling properties, layout patterns.</p>
+      <span class="include-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="3" width="11.5" height="14.5" rx="1.5"/><path d="M5 6.5v12.5A1.5 1.5 0 0 0 6.5 20.5H16"/><path d="M11 8h5.5M11 11h5.5M11 14h3.5"/></svg></span>
+      <h3>8 skill files</h3>
+      <p>Structured knowledge documents you upload to Claude Projects. They teach Claude the confirmed Divi 5 JSON schemas — module types, nesting rules, styling properties, layout patterns, design systems and Theme Builder templates — plus WooCommerce shop building as a bonus.</p>
     </div>
     <div class="include-card reveal">
-      <span class="include-icon">🎨</span>
+      <span class="include-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><circle cx="17" cy="17" r="3.5"/></svg></span>
       <h3>Design system JSON</h3>
       <p>A complete example design system you can import into a fresh Divi install — plus a visual HTML reference so you can see how all the variables and presets fit together.</p>
     </div>
     <div class="include-card reveal">
-      <span class="include-icon">💬</span>
+      <span class="include-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h14a1.5 1.5 0 0 1 1.5 1.5v9A1.5 1.5 0 0 1 19 16h-8l-5 4v-4H5a1.5 1.5 0 0 1-1.5-1.5v-9A1.5 1.5 0 0 1 5 4z"/><path d="M8 8.5h8M8 11.5h5"/></svg></span>
       <h3>Starter prompt sheet</h3>
       <p>The exact prompts for every stage of the workflow — setup, design system, page review, copy direction, JSON generation, and debugging after import.</p>
     </div>
     <div class="include-card reveal">
-      <span class="include-icon">⚙️</span>
+      <span class="include-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="5.5" r="2.2"/><circle cx="12" cy="12" r="2.2"/><circle cx="19" cy="18.5" r="2.2"/><path d="M7.2 5.5H10a2 2 0 0 1 2 2v2.3M14.2 12H17a2 2 0 0 1 2 2v2.3"/></svg></span>
       <h3>The six-stage workflow</h3>
-      <p>Design system first, HTML review before JSON, copy approval before building, and finally adding your own images, graphics and copy — the discipline that makes every page feel intentional.</p>
+      <p>Design system first, canvas review before JSON, copy approval before building, and finally adding your own images, graphics and copy — the discipline that makes every page feel intentional.</p>
     </div>
     <div class="include-card reveal">
-      <span class="include-icon">🔁</span>
+      <span class="include-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="3.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1"/><path d="M12 13.5l4.2 7H7.8z"/></svg></span>
       <h3>Works for any niche</h3>
       <p>The workflow isn't built for one type of website. You know your clients, your niche, your palette. This system works with whatever you bring to it.</p>
     </div>
@@ -690,29 +695,29 @@
     <div class="step-item reveal">
       <div class="step-num">1</div>
       <div class="step-body">
-        <h3>Build your design system first</h3>
-        <p>Before any pages, define your variables — colours, type scale, spacing. Bring your moodboard and font references to Claude. It organises your decisions into a variable system and generates the design system JSON file. Import it into Divi once. Every page draws from it automatically.</p>
+        <h3>Approve your design system in Claude</h3>
+        <p>Before any pages, bring your moodboard and font references to Claude. It turns your decisions into a design system you can browse and refine — colours with roles, type scale, spacing, component previews. Once you approve it, Claude generates the Divi design system JSON. Import it into Divi once. Every page draws from it automatically.</p>
       </div>
     </div>
     <div class="step-item reveal">
       <div class="step-num">2</div>
       <div class="step-body">
-        <h3>HTML review before any JSON</h3>
-        <p>For each page, Claude produces a self-contained HTML preview — your colours, your fonts, real placeholder copy. You see the full page before a single line of Divi JSON is written. Design decisions happen here, not mid-import.</p>
+        <h3>Design each page on the canvas</h3>
+        <p>For each page, Claude lays out the full page on a design canvas beside the chat, built from your design system — desktop and phone side by side, real placeholder copy. You see the whole page before a single line of Divi JSON is written. Design decisions happen here, not mid-import.</p>
       </div>
     </div>
     <div class="step-item reveal">
       <div class="step-num">3</div>
       <div class="step-body">
-        <h3>Refine copy and layout</h3>
-        <p>Work through the HTML section by section. Get the headlines, body text, and CTAs right at this stage. Changing copy after JSON generation means rebuilding — this stage exists so you never have to.</p>
+        <h3>Refine it on the canvas</h3>
+        <p>Edit directly on the canvas, comment on the exact element you want changed, or ask in the chat. Get the headlines, body text, and CTAs right at this stage. Changing copy after JSON generation means rebuilding — this stage exists so you never have to.</p>
       </div>
     </div>
     <div class="step-item reveal">
       <div class="step-num">4</div>
       <div class="step-body">
         <h3>Approve, then generate</h3>
-        <p>When the page looks and reads right, you give the go-ahead. Claude generates the Divi 5 JSON using the skill file schemas and your design variables, runs structural validation checks, and writes the output file.</p>
+        <p>When the page looks and reads right, you approve the canvas. Claude reads it and builds the same page as Divi 5 JSON, using the skill file schemas and your design variables, runs structural validation checks, and writes the output file.</p>
       </div>
     </div>
     <div class="step-item reveal">
@@ -746,7 +751,7 @@
       <p>"The result was a six-page website template system — a complete design system, six page templates, a Python build pipeline, and validated JSON throughout."</p>
     </blockquote>
     <p class="reveal">This guide documents that workflow so other Divi designers can use it — whatever niche you work in. It's a new workflow and I'm still learning as I go. If you find something that makes it better, I'd love to hear it.</p>
-    <video src="/laptop-mockup-navy.mp4" class="results-img reveal" autoplay muted loop playsinline aria-label="Pages built with the Build With Claude workflow, shown inside Divi 5"></video>
+    <video src="/laptop-mockup.mp4" class="results-img reveal" autoplay muted loop playsinline aria-label="Pages built with the Build With Claude workflow, shown inside Divi 5"></video>
   </div>
 </section>
 
@@ -772,7 +777,7 @@
     <a href="https://soulmagicstudio.gumroad.com/l/bwc" target="_blank" class="btn-primary reveal" style="font-size:1rem; padding:1rem 2.5rem; display:inline-block;">
       Get Build With Claude →
     </a>
-    <p class="reveal" style="margin-top:1.5rem; font-size:0.8rem; color:#4A4A6A;">
+    <p class="reveal" style="margin-top:1.5rem; font-size:0.8rem; color:var(--ink-muted);">
       Requires a Claude.ai account (free plan works) · Divi 5 knowledge assumed
     </p>
   </div>
